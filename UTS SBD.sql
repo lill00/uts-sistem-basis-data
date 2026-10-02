@@ -1,3 +1,31 @@
+CREATE TABLE BRANCH (
+branchNo varchar(80), 
+street varchar(80),
+city varchar (80),
+postcode varchar (80)
+)
+
+
+INSERT INTO BRANCH (branchNo, street, city, postcode) VALUES
+('B005' , '22 Deer Rd', 'London', 'SW1 4EH'),
+('B007', '16 Argyll St', 'berdeen', 'AB2 3SU'),
+('B004', '163 Main St', 'Glasgow', 'G11 9QX'),
+('B002', '32 Manse Rd', 'Bristol', 'B5599 INZ'),
+('B002', '56 Cllover Dr', 'Lomdon', 'NW10 6EU');
+
+SELECT * FROM branch;
+
+CREATE TABLE staff (
+staff_no varchar(80), 
+f_name varchar (80),
+l_name varchar (80),
+sex varchar (80),
+position varchar (80),
+DOB varchar (80),
+salary int
+)
+
+
 INSERT INTO staff (staff_no,f_name, l_name, position, sex, DOB, salary) VALUES
 ('SL21' , 'John', 'White', 'Manager', 'M', "1-Okt-45", 30000),
 ('SG37', 'Ann', 'Beech', 'Assistant', 'F', "10-Nov-60", 12000),
