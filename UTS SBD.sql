@@ -106,5 +106,49 @@ VALUES
 
 SELECT * From client;
 
+--6 table viewing
+CREATE TABLE Viewing (
+    clientNo CHAR(4),
+    propertyNo CHAR(4),
+    viewDate DATE,
+    comment VARCHAR(50),
+    PRIMARY KEY (clientNo, propertyNo),
+    FOREIGN KEY (clientNo) REFERENCES Client(clientNo),
+    FOREIGN KEY (propertyNo) REFERENCES PropertyForRent(propertyNo)
+);
 
+INSERT INTO Viewing
+(clientNo, propertyNo, viewDate, comment)
+VALUES
+('CR56', 'PA14', '2004-05-24', 'too small'),
+('CR76', 'PG4', '2004-04-20', 'too remote'),
+('CR56', 'PG4', '2004-05-26', NULL),
+('CR62', 'PA14', '2004-05-14', 'no dining room'),
+('CR56', 'PG36', '2004-04-28', NULL);
+
+SELECT * From viewing;
+
+
+-- 7 table regstration
+CREATE TABLE Registration (
+    clientNo CHAR(4),
+    branchNo CHAR(4),
+    staffNo CHAR(5),
+    dateJoined DATE,
+    PRIMARY KEY (clientNo, branchNo),
+    FOREIGN KEY (clientNo) REFERENCES Client(clientNo),
+    FOREIGN KEY (branchNo) REFERENCES Branch(branchNo),
+    FOREIGN KEY (staffNo) REFERENCES Staff(staffNo)
+);
+
+
+INSERT INTO Registration
+(clientNo, branchNo, staffNo, dateJoined)
+VALUES
+('CR76', 'B005', 'SL41', '2004-01-02'),
+('CR56', 'B003', 'SG37', '2003-04-11'),
+('CR74', 'B003', 'SG37', '2002-11-16'),
+('CR62', 'B007', 'SA9', '2003-03-07');
+
+SELECT * From registration;
 
