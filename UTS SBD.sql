@@ -1,10 +1,9 @@
-CREATE TABLE BRANCH (
-branchNo varchar(80) PRIMARY KEY, 
-street varchar(80),
-city varchar (80),
-postcode varchar (80)
-)
-
+CREATE TABLE Branch (
+    branchNo CHAR(4) PRIMARY KEY,
+    street VARCHAR(30),
+    city VARCHAR(20),
+    postcode VARCHAR(10)
+);
 
 INSERT INTO Branch (branchNo, street, city, postcode)
 VALUES
@@ -16,26 +15,28 @@ VALUES
     
 SELECT * FROM branch;
 
-CREATE TABLE staff (
-staff_no varchar(80) PRIMARY KEY, 
-f_name varchar (80),
-l_name varchar (80),
-sex varchar (80),
-position varchar (80),
-DOB varchar (80),
-salary int
-FOREIGN KEY (branchNo) REFERENCES Branch(branchNo)
-)
+CREATE TABLE Staff (
+    staffNo CHAR(5) PRIMARY KEY,
+    fName VARCHAR(15),
+    lName VARCHAR(15),
+    position VARCHAR(15),
+    sex CHAR(1),
+    DOB DATE,
+    salary NUMERIC(8,2),
+    branchNo CHAR(4),
+    FOREIGN KEY (branchNo) REFERENCES Branch(branchNo)
+);
 
+INSERT INTO Staff
+(staffNo, fName, lName, position, sex, DOB, salary, branchNo)
+VALUES
+('SL21' , 'John', 'White', 'Manager', 'M', '1-Okt-45', 30000, 'B005'),
+('SG37', 'Ann', 'Beech', 'Assistant', 'F', '10-Nov-60', 12000, 'B003'),
+('SG14', 'David', 'Fond', 'Supervisor', 'M', '26-May-58', 18000, 'B003'),
+('SA9', 'Mary', 'Howe', 'Assistant', 'F', '19-FEb-70', 9000, 'B007'),
+('SG5', 'Susan', 'brand', 'Manager', 'F', '5-Jun-40', 24000, 'B003'),
+('SL41', 'Julie', 'Lee', 'Assistant', 'F', '13-Jun-63', 9000, 'B005');
 
-INSERT INTO staff (staff_no,f_name, l_name, position, sex, DOB, salary) VALUES
-('SL21' , 'John', 'White', 'Manager', 'M', "1-Okt-45", 30000),
-('SG37', 'Ann', 'Beech', 'Assistant', 'F', "10-Nov-60", 12000),
-('SG 14', 'David', 'Fond', 'Supervisor', 'M', "26-May-58", 18000),
-('SA9', 'Mary', 'Howe', 'Assistant', 'F', "19-FEb-70", 9000),
-('SG5', 'Susan', 'brand', 'Manager', 'F', "5-Jun-40", 24000),
-('SL41', 'Julie', 'Lee', 'Assistant', 'F', "13-Jun-63", 9000);
-;
 
 CREATE TABLE PropertyForRent (
     propertyNo CHAR(4) PRIMARY KEY,
