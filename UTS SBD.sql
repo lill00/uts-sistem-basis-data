@@ -6,13 +6,14 @@ postcode varchar (80)
 )
 
 
-INSERT INTO BRANCH (branchNo, street, city, postcode) VALUES
+INSERT INTO Branch (branchNo, street, city, postcode)
+VALUES
 ('B005' , '22 Deer Rd', 'London', 'SW1 4EH'),
 ('B007', '16 Argyll St', 'berdeen', 'AB2 3SU'),
-('B004', '163 Main St', 'Glasgow', 'G11 9QX'),
-('B002', '32 Manse Rd', 'Bristol', 'B5599 INZ'),
-('B002', '56 Cllover Dr', 'Lomdon', 'NW10 6EU');
-
+('B003', '163 Main St', 'Glasgow', 'G11 9QX'),
+('B004', '32 Manse Rd', 'Bristol', 'B5599 INZ'),
+('B002', '56 Cllover Dr', 'Lomdon', 'NW10 6EU')
+    
 SELECT * FROM branch;
 
 CREATE TABLE staff (
