@@ -1,3 +1,4 @@
+--1 table branch
 CREATE TABLE Branch (
     branchNo CHAR(4) PRIMARY KEY,
     street VARCHAR(30),
@@ -15,13 +16,14 @@ VALUES
     
 SELECT * FROM branch;
 
+--2 table staff
 CREATE TABLE Staff (
     staffNo CHAR(5) PRIMARY KEY,
     fName VARCHAR(15),
     lName VARCHAR(15),
     position VARCHAR(15),
     sex CHAR(1),
-    DOB DATE,
+    DOB VARCHAR(20),
     salary NUMERIC(8,2),
     branchNo CHAR(4),
     FOREIGN KEY (branchNo) REFERENCES Branch(branchNo)
@@ -37,7 +39,9 @@ VALUES
 ('SG5', 'Susan', 'brand', 'Manager', 'F', '5-Jun-40', 24000, 'B003'),
 ('SL41', 'Julie', 'Lee', 'Assistant', 'F', '13-Jun-63', 9000, 'B005');
 
+SELECT * FROM staff;
 
+--3 table property for rent
 CREATE TABLE PropertyForRent (
     propertyNo CHAR(4) PRIMARY KEY,
     street VARCHAR(30),
@@ -51,7 +55,19 @@ CREATE TABLE PropertyForRent (
     branchNo CHAR(4)
 );
 
+INSERT INTO PropertyForRent
+(propertyNo, street, city, postcode, type, rooms, rent, ownerNo, staffNo, branchNo)
+VALUES
+('PA14', '16 Holhead', 'Aberdeen', 'AB7 5SU', 'House', 6, 650, 'CO46', 'SA9', 'B007'),
+('PL94', '6 Argyll St', 'London', 'NW2', 'Flat', 4, 400, 'CO87', 'SL41', 'B005'),
+('PG4', '6 Lawrence St', 'Glasgow', 'G11 9QX', 'Flat', 3, 350, 'CO40', NULL, 'B003'),
+('PG36', '2 Manor Rd', 'Glasgow', 'G32 4QX', 'Flat', 3, 375, 'CO93', 'SG37', 'B003'),
+('PG21', '18 Dale Rd', 'Glasgow', 'G12', 'House', 5, 600, 'CO87', 'SG37', 'B003'),
+('PG16', '5 Novar Dr', 'Glasgow', 'G12 9AX', 'Flat', 4, 450, 'CO93', 'SG14', 'B003');
 
+SELECT * FROM PropertyForRent;
+
+--4 table client
 CREATE TABLE Client (
     clientNo CHAR(4) PRIMARY KEY,
     fName VARCHAR(15),
@@ -59,15 +75,36 @@ CREATE TABLE Client (
     telNo VARCHAR(15),
     prefType VARCHAR(10),
     maxRent NUMERIC(8,2),
-    eMail VARCHAR(50)
 );
 
+INSERT INTO Client
+(clientNo, fName, lName, telNo, prefType, maxRent)
+VALUES
+('CR76', 'John', 'Kay', '0207-774-5632', 'Flat', 425),
+('CR56', 'Aline', 'Stewart', '0141-848-1825', 'Flat', 350),
+('CR74', 'Mike', 'Ritchie', '01475-392178', 'House', 750),
+('CR62', 'Mary', 'Treggar', '01224-196720', 'Flat', 600);
+
+SELECT * From client;
+
+--5 table private owner
 CREATE TABLE PrivateOwner (
     ownerNo CHAR(4) PRIMARY KEY,
     fName VARCHAR(15),
     lName VARCHAR(15),
     address VARCHAR(50),
     telNo VARCHAR(15),
-    eMail VARCHAR(50),
-    password VARCHAR(40)
 );
+
+INSERT INTO PrivateOwner
+(ownerNo, fName, lName, address, telNo)
+VALUES
+('CO46', 'Joe', 'Keogh', '2 Fergus Dr, Aberdeen AB2 7SX', '01224-861212'),
+('CO87', 'Carol', 'Farrel', '6 Achray St, Glasgow G32 9DX', '0141-357-7419'),
+('CO40', 'Tina', 'Murphy', '63 Well St, Glasgow G42', '0141-943-1728'),
+('CO93', 'Tony', 'Shaw', '12 Park Pl, Glasgow G4 0QR', '0141-225-7025');
+
+SELECT * From client;
+
+
+
